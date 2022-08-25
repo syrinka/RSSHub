@@ -765,6 +765,42 @@
         docs:"https://docs.rsshub.app/bbs.html#yin-pin-ying-yong",
         source:[ "/all.php" ],
         target:"/audiobar/latest" } ] },
+  "baidu.com":{ _name:"贴吧",
+    tieba:[ { title:"帖子列表",
+        docs:"https://docs.rsshub.app/bbs.html#bai-du-tie-ba",
+        source:"f",
+        target:(params, url) => {
+                    const type = new URL(url).searchParams.get('tab');
+                    if (!type || type === 'main') {
+                        return `/tieba/forum/${new URL(url).searchParams.get('kw')}`;
+                    }
+                } },
+      { title:"精品帖子",
+        docs:"https://docs.rsshub.app/bbs.html#bai-du-tie-ba",
+        source:"f",
+        target:(params, url) => {
+                    const type = new URL(url).searchParams.get('tab');
+                    if (type === 'good') {
+                        return `/tieba/forum/good/${new URL(url).searchParams.get('kw')}`;
+                    }
+                } },
+      { title:"帖子动态",
+        docs:"https://docs.rsshub.app/bbs.html#bai-du-tie-ba",
+        source:"/p/:id",
+        target:"/tieba/post/:id" },
+      { title:"只看楼主",
+        docs:"https://docs.rsshub.app/bbs.html#bai-du-tie-ba",
+        source:"/p/:id",
+        target:"/tieba/post/lz/:id" },
+      { title:"用户帖子",
+        docs:"https://docs.rsshub.app/bbs.html#tie-ba",
+        source:"/home/main",
+        target:(params, url) => {
+                    const uid = new URL(url).searchParams.get('un');
+                    if (uid) {
+                        return `/tieba/user/${uid}`;
+                    }
+                } } ] },
   "baijingapp.com":{ _name:"白鲸出海",
     ".":[ { title:"最新",
         docs:"https://docs.rsshub.app/new-media.html#bai-jing-chu-hai",
@@ -2722,6 +2758,11 @@
         docs:"https://docs.rsshub.app/government.html#zhong-guo-zai-ren-hang-tian",
         source:[ "/kpjy/:id" ],
         target:"/gov/cmse/kpjy/:id" } ] },
+  "cnnic.net.cn":{ _name:"中国互联网络信息中心",
+    www:[ { title:"新闻中心",
+        docs:"https://docs.rsshub.app/government.html#zhong-guo-hu-lian-wang-luo-xin-xi-zhong-xin-xin-wen-zhong-xin",
+        source:[ "/" ],
+        target:(params, url) => `/gov/cnnic/${new URL(url).match(/cnnic\.net\.cn\/(.*)/)[1]}` } ] },
   "customs.gov.cn":{ _name:"中华人民共和国海关总署",
     www:[ { title:"拍卖信息 / 海关法规",
         docs:"https://docs.rsshub.app/government.html#zhong-hua-ren-min-gong-he-guo-hai-guan-zong-shu",
@@ -5503,10 +5544,10 @@
         docs:"https://docs.rsshub.app/bbs.html#nga-tie-zi",
         source:"/read.php",
         target:(params, url, document) => {
-            const tid = new URL(url).searchParams.get('tid');
-            const authorId = document.documentElement.innerHTML.match(/commonui\.userInfo\.setAll\(\s{3}{"(\d+)"/)[1];
-            return `/nga/post/${tid}/${authorId}`;
-        } } ] },
+                    const tid = new URL(url).searchParams.get('tid');
+                    const authorId = document.documentElement.innerHTML.match(/commonui\.userInfo\.setAll\(\s{3}{"(\d+)"/)[1];
+                    return `/nga/post/${tid}/${authorId}`;
+                } } ] },
   "178.com":{ _name:"NGA",
     nga:[ { title:"分区帖子",
         docs:"https://docs.rsshub.app/bbs.html#nga-fen-qu-tie-zi",
@@ -5520,27 +5561,10 @@
         docs:"https://docs.rsshub.app/bbs.html#nga-tie-zi",
         source:"/read.php",
         target:(params, url, document) => {
-            const tid = new URL(url).searchParams.get('tid');
-            const authorId = document.documentElement.innerHTML.match(/commonui\.userInfo\.setAll\(\s{3}{"(\d+)"/)[1];
-            return `/nga/post/${tid}/${authorId}`;
-        } } ] },
-  "ngabbs.com":{ _name:"NGA",
-    ".":[ { title:"分区帖子",
-        docs:"https://docs.rsshub.app/bbs.html#nga-fen-qu-tie-zi",
-        source:"/thread.php",
-        target:(params, url) => new URL(url).searchParams.get('fid') && `/nga/forum/${new URL(url).searchParams.get('fid')}` },
-      { title:"帖子",
-        docs:"https://docs.rsshub.app/bbs.html#nga-tie-zi",
-        source:"/read.php",
-        target:(params, url) => new URL(url).searchParams.get('tid') && `/nga/post/${new URL(url).searchParams.get('tid')}` },
-      { title:"帖子 - 只看作者",
-        docs:"https://docs.rsshub.app/bbs.html#nga-tie-zi",
-        source:"/read.php",
-        target:(params, url, document) => {
-            const tid = new URL(url).searchParams.get('tid');
-            const authorId = document.documentElement.innerHTML.match(/commonui\.userInfo\.setAll\(\s{3}{"(\d+)"/)[1];
-            return `/nga/post/${tid}/${authorId}`;
-        } } ] },
+                    const tid = new URL(url).searchParams.get('tid');
+                    const authorId = document.documentElement.innerHTML.match(/commonui\.userInfo\.setAll\(\s{3}{"(\d+)"/)[1];
+                    return `/nga/post/${tid}/${authorId}`;
+                } } ] },
   "ngocn2.org":{ _name:"NGOCN",
     ".":[ { title:"分类",
         docs:"https://docs.rsshub.app/new-media.html#ngocn2-fen-lei",
@@ -7396,6 +7420,16 @@
         source:[ "/app/:id/review",
           "/app/:id" ],
         target:"/taptap/review/:id" } ] },
+  "taptap.io":{ _name:"TapTap International",
+    ".":[ { title:"Changelog",
+        docs:"https://docs.rsshub.app/game.html#taptap",
+        source:[ "/app/:id" ],
+        target:"/taptap/intl/changelog/:id" },
+      { title:"Ratings & Reviews",
+        docs:"https://docs.rsshub.app/game.html#taptap",
+        source:[ "/app/:id/review",
+          "/app/:id" ],
+        target:"/taptap/intl/review/:id" } ] },
   "techflow520.com":{ _name:"深潮TechFlow",
     ".":[ { title:"分类",
         docs:"https://docs.rsshub.app/new-media.html#shen-chao-techflow-fen-lei",
@@ -8950,42 +8984,6 @@
         docs:"https://docs.rsshub.app/program-update.html#pu-gong-ying-ying-yong-fen-fa",
         source:"/:app",
         target:"/pgyer/:app" } ] },
-  "baidu.com":{ _name:"贴吧",
-    tieba:[ { title:"帖子列表",
-        docs:"https://docs.rsshub.app/bbs.html#tie-ba",
-        source:"f",
-        target:(params, url) => {
-                    const type = new URL(url).searchParams.get('tab');
-                    if (!type || type === 'main') {
-                        return `/tieba/forum/${new URL(url).searchParams.get('kw')}`;
-                    }
-                } },
-      { title:"精品帖子",
-        docs:"https://docs.rsshub.app/bbs.html#tie-ba",
-        source:"f",
-        target:(params, url) => {
-                    const type = new URL(url).searchParams.get('tab');
-                    if (type === 'good') {
-                        return `/tieba/forum/good/${new URL(url).searchParams.get('kw')}`;
-                    }
-                } },
-      { title:"帖子动态",
-        docs:"https://docs.rsshub.app/bbs.html#tie-ba",
-        source:"/p/:id",
-        target:"/tieba/post/:id" },
-      { title:"只看楼主",
-        docs:"https://docs.rsshub.app/bbs.html#tie-ba",
-        source:"/p/:id",
-        target:"/tieba/post/lz/:id" },
-      { title:"用户帖子",
-        docs:"https://docs.rsshub.app/bbs.html#tie-ba",
-        source:"/home/main",
-        target:(params, url) => {
-                    const uid = new URL(url).searchParams.get('un');
-                    if (uid) {
-                        return `/tieba/user/${uid}`;
-                    }
-                } } ] },
   "wineyun.com":{ _name:"酒云网",
     www:[ { title:"最新商品",
         docs:"https://docs.rsshub.app/other.html#jiu-yun-wang",

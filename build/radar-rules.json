@@ -1202,6 +1202,38 @@
       }
     ]
   },
+  "baidu.com": {
+    "_name": "贴吧",
+    "tieba": [
+      {
+        "title": "帖子列表",
+        "docs": "https://docs.rsshub.app/bbs.html#bai-du-tie-ba",
+        "source": "f"
+      },
+      {
+        "title": "精品帖子",
+        "docs": "https://docs.rsshub.app/bbs.html#bai-du-tie-ba",
+        "source": "f"
+      },
+      {
+        "title": "帖子动态",
+        "docs": "https://docs.rsshub.app/bbs.html#bai-du-tie-ba",
+        "source": "/p/:id",
+        "target": "/tieba/post/:id"
+      },
+      {
+        "title": "只看楼主",
+        "docs": "https://docs.rsshub.app/bbs.html#bai-du-tie-ba",
+        "source": "/p/:id",
+        "target": "/tieba/post/lz/:id"
+      },
+      {
+        "title": "用户帖子",
+        "docs": "https://docs.rsshub.app/bbs.html#tie-ba",
+        "source": "/home/main"
+      }
+    ]
+  },
   "baijingapp.com": {
     "_name": "白鲸出海",
     ".": [
@@ -5006,6 +5038,18 @@
           "/kpjy/:id"
         ],
         "target": "/gov/cmse/kpjy/:id"
+      }
+    ]
+  },
+  "cnnic.net.cn": {
+    "_name": "中国互联网络信息中心",
+    "www": [
+      {
+        "title": "新闻中心",
+        "docs": "https://docs.rsshub.app/government.html#zhong-guo-hu-lian-wang-luo-xin-xi-zhong-xin-xin-wen-zhong-xin",
+        "source": [
+          "/"
+        ]
       }
     ]
   },
@@ -10024,26 +10068,6 @@
       }
     ]
   },
-  "ngabbs.com": {
-    "_name": "NGA",
-    ".": [
-      {
-        "title": "分区帖子",
-        "docs": "https://docs.rsshub.app/bbs.html#nga-fen-qu-tie-zi",
-        "source": "/thread.php"
-      },
-      {
-        "title": "帖子",
-        "docs": "https://docs.rsshub.app/bbs.html#nga-tie-zi",
-        "source": "/read.php"
-      },
-      {
-        "title": "帖子 - 只看作者",
-        "docs": "https://docs.rsshub.app/bbs.html#nga-tie-zi",
-        "source": "/read.php"
-      }
-    ]
-  },
   "ngocn2.org": {
     "_name": "NGOCN",
     ".": [
@@ -13124,6 +13148,28 @@
       }
     ]
   },
+  "taptap.io": {
+    "_name": "TapTap International",
+    ".": [
+      {
+        "title": "Changelog",
+        "docs": "https://docs.rsshub.app/game.html#taptap",
+        "source": [
+          "/app/:id"
+        ],
+        "target": "/taptap/intl/changelog/:id"
+      },
+      {
+        "title": "Ratings & Reviews",
+        "docs": "https://docs.rsshub.app/game.html#taptap",
+        "source": [
+          "/app/:id/review",
+          "/app/:id"
+        ],
+        "target": "/taptap/intl/review/:id"
+      }
+    ]
+  },
   "techflow520.com": {
     "_name": "深潮TechFlow",
     ".": [
@@ -15843,38 +15889,6 @@
         "docs": "https://docs.rsshub.app/program-update.html#pu-gong-ying-ying-yong-fen-fa",
         "source": "/:app",
         "target": "/pgyer/:app"
-      }
-    ]
-  },
-  "baidu.com": {
-    "_name": "贴吧",
-    "tieba": [
-      {
-        "title": "帖子列表",
-        "docs": "https://docs.rsshub.app/bbs.html#tie-ba",
-        "source": "f"
-      },
-      {
-        "title": "精品帖子",
-        "docs": "https://docs.rsshub.app/bbs.html#tie-ba",
-        "source": "f"
-      },
-      {
-        "title": "帖子动态",
-        "docs": "https://docs.rsshub.app/bbs.html#tie-ba",
-        "source": "/p/:id",
-        "target": "/tieba/post/:id"
-      },
-      {
-        "title": "只看楼主",
-        "docs": "https://docs.rsshub.app/bbs.html#tie-ba",
-        "source": "/p/:id",
-        "target": "/tieba/post/lz/:id"
-      },
-      {
-        "title": "用户帖子",
-        "docs": "https://docs.rsshub.app/bbs.html#tie-ba",
-        "source": "/home/main"
       }
     ]
   },
